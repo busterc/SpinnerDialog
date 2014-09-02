@@ -33,19 +33,12 @@ public class SpinnerDialog extends CordovaPlugin {
 				public void run() {
 
 					ProgressDialog dialog = ProgressDialog
-					.show(cordova.getActivity(), title, message, true, true,
-							new DialogInterface.OnCancelListener() {
-								public void onCancel(DialogInterface dialog) {
-									while (!SpinnerDialog.this.spinnerDialogStack.empty()) {
-										SpinnerDialog.this.spinnerDialogStack.pop().dismiss();
-									}
-								}
-							});
-					
+					.show(cordova.getActivity(), title, message, true, false);
+
 					if (title == null && message == null) {
 						dialog.setContentView(new ProgressBar(cordova.getActivity()));
 					}
-					
+
 					SpinnerDialog.this.spinnerDialogStack.push(dialog);
 
 				}
